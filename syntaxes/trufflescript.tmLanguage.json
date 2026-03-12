@@ -1,0 +1,104 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "TruffleScript",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.trufflescript",
+					"match": "\\b(if|else|while|for|return)\\b"
+				},
+				{
+					"name": "storage.modifier.trufflescript",
+					"match": "\\b(class|func)\\b"
+				},
+				{
+					"name": "storage.type.trufflescript",
+					"match": "\\b(number|string|bool)\\b"
+				},
+				{
+					"name": "variable.language.trufflescript",
+					"match": "\\b(let|const|this(?=\\.)|null)\\b"
+				},
+				{
+					"name": "support.class.trufflescript",
+					"match": "\\b(map|arr)\\b(?=<)"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.trufflescript",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.trufflescript",
+							"match": "\\\\(\\\\|\\'|\\\"|\\?|a|b|f|n|r|t|v|0|[0-7]{3}|x[A-Fa-f0-9]{2}|u[A-Fa-f0-9]{4}|U[A-Fa-f0-9]{8})"
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.trufflescript",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.trufflescript",
+							"match": "\\\\(\\\\|\\'|\\\"|\\?|a|b|f|n|r|t|v|0|[0-7]{3}|x[A-Fa-f0-9]{2}|u[A-Fa-f0-9]{4}|U[A-Fa-f0-9]{8})"
+						}
+					]
+				},
+				{
+					"name": "string.quoted.multi.trufflescript",
+					"begin": "\"\"\"",
+					"end": "\"\"\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.trufflescript",
+							"match": "\\\\(\\\\|\\'|\\\"|\\?|a|b|f|n|r|t|v|0|[0-7]{3}|x[A-Fa-f0-9]{2}|u[A-Fa-f0-9]{4}|U[A-Fa-f0-9]{8})"
+						}
+					]
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.trufflescript",
+					"begin": "/\\*",
+					"end": "\\*/",
+					"patterns": [
+						{
+							"include": "#comments"
+						}
+					]
+				},
+				{
+					"name": "comment.double-slash.trufflescript",
+					"match": "//.*"
+				}
+			]
+		},
+		"numbers": {
+			"name": "constant.numeric.trufflescript",
+			"match": "\\b(\\d+)\\b"
+		}
+	},
+	"scopeName": "source.trs"
+}
