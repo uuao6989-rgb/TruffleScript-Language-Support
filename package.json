@@ -1,0 +1,33 @@
+{
+  "name": "trufflescript",
+  "displayName": "TruffleScript",
+  "description": "TruffleScript language support",
+  "version": "0.0.1",
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:trufflescript"
+  ],
+  "engines": {
+    "vscode": "^1.110.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "trufflescript",
+      "aliases": ["TruffleScript", "trufflescript"],
+      "extensions": [".trs",".truffle"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "trufflescript",
+      "scopeName": "source.trs",
+      "path": "./syntaxes/trufflescript.tmLanguage.json"
+    }]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uuao6989-rgb/TruffleScript-Language-Support/tree/main"
+  }
+}
