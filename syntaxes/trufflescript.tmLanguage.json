@@ -12,7 +12,7 @@
 			"include": "#strings"
 		},
 		{
-			"include": "#numbers"
+			"include": "#symbols"
 		}
 	],
 	"repository": {
@@ -20,23 +20,31 @@
 			"patterns": [
 				{
 					"name": "keyword.control.trufflescript",
-					"match": "\\b(if|else|while|for|return)\\b"
+					"match": "\\b(if|else|while|for|return|in|of|break|continue|try|catch|throw|require|export|inherits)\\b"
 				},
 				{
 					"name": "storage.modifier.trufflescript",
-					"match": "\\b(class|func)\\b"
+					"match": "\\b(class|struct|func)\\b|(?<=\\))\\s*\\=\\>"
 				},
 				{
 					"name": "storage.type.trufflescript",
-					"match": "\\b(number|string|bool)\\b"
+					"match": "\\b(number|string|bool|void)\\b"
 				},
 				{
 					"name": "variable.language.trufflescript",
-					"match": "\\b(let|const|this(?=\\.)|null)\\b"
+					"match": "\\b(let|const|(this|super)(?=\\.)|null|new)\\b|\\b(fmt|c)\\b\\s*\\!(?=[\"'])"
+				},
+				{
+					"name": "constant.language.trufflescript",
+					"match": "\\b(true|false)\\b"
 				},
 				{
 					"name": "support.class.trufflescript",
-					"match": "\\b(map|arr)\\b(?=<)"
+					"match": "\\b(map|arr|Int|Float|File|Module)\\b\\s*(?!\\()|\\b(unknown|(?<=File\\.)Handle)\\b|\\b(Error)\\b\\s*(?=\\()"
+				},
+				{
+					"name": "support.function.trufflescript",
+					"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)(?=\\()\\b"
 				}
 			]
 		},
@@ -95,9 +103,17 @@
 				}
 			]
 		},
-		"numbers": {
-			"name": "constant.numeric.trufflescript",
-			"match": "\\b(\\d+)\\b"
+		"symbols": {
+			"patterns": [
+				{
+					"name": "constant.numeric.trufflescript",
+					"match": "\\b(\\d+)\\b|\\b0x[0-9A-F]*\\b|\\b[0-9][0-9_]*\\b"
+				},
+				{
+					"name": "punctuation.trufflescript",
+					"match": ";\\.:\\?"
+				}
+			]
 		}
 	},
 	"scopeName": "source.trs"
